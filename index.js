@@ -17,8 +17,6 @@ app.use(
 // port
 const PORT = process.env.PORT || 3000;
 
-connectDB();
-
 app.use("/tasks", taskRoutes);
 
 app.get("/", (req, res) => {
@@ -27,6 +25,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Server started on port ${PORT}`);
+  await connectDB();
 });
