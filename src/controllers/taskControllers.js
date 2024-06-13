@@ -59,4 +59,27 @@ const editTasksById = async (req, res) => {
   }
 };
 
-module.exports = { postTasks, getTasks ,editTasksById};
+// delete tasks by id
+
+const deleteTasksById = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const task = await Task.findByIdAndDelete(id);
+    if (!task) {
+      return res.status(404).send({
+        message: "Task not found",
+      });
+    }
+    res.status(201).send({
+      message: "Task deleted successfully",
+      task: task,
+    });
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send({
+      message: err.message,
+    });
+  }
+};
+
+module.exports = { postTasks, getTasks, editTasksById, deleteTasksById };
