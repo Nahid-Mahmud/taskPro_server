@@ -15,6 +15,9 @@ const postTasks = async (req, res) => {
     });
   } catch (err) {
     console.log(err.message);
+    res.send({
+      message: err.message,
+    });
   }
 };
 
