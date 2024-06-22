@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173","https://taskpro-nahid.surge.sh"],
+    origin: ["http://localhost:5173","https://taskpro-nahid.surge.sh","https://taskpro-nahid.vercel.app"],
   })
 );
 // port
